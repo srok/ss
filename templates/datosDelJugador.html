@@ -1,0 +1,31 @@
+<ion-view title="Datos del Jugador" id="page5" class="page_nuevo" >
+    <ion-content padding="true" class="has-header" >
+        <form id="datosDelJugador-form4" class="list ">
+            <br><br>
+     <h1>Tu código</h1>
+                <input size="4" type="number" class="input" style="width: 180px" placeholder="" ng-model="player.player_code" ng-change="checkPlayer();">
+<br><br><br>
+
+              <!--   <h1>Nombre</h1>
+                <input type="text" placeholder="" class="input" ng-model="player.player_name">
+ -->
+            <h1>Edad</h1>
+            <ion-item class="range range-positive " id="datosDelJugador-age">
+                <input type="range" value="10" min="1" max="65" name="player_edad_rango" ng-model="player.player_edad">{{player.player_edad}}
+            </ion-item>
+
+            <h1>Sexo</h1>
+                <select class="input" ng-model="player.player_sexo" ng-options="value.player_sexo as value.player_sexo_name for (key, value) in player_sexos">
+                    <option value="">Seleccionar...</option>
+                </select>
+
+
+        </form>
+        <br><br><br>
+        <a ng-click="loadPlayer(player);" id="datosDelJugador-button4">
+            <img src="img/jugar.png"/>
+        </a>
+
+        
+    </ion-content>
+</ion-view>

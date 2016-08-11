@@ -1,0 +1,43 @@
+<ion-view title="Juego Nuevo" id="page1" class="page_nuevo">
+    <ion-content padding="true" class="has-header" >
+    <div ng-if="jugada_id==0">
+        <br>
+        <br>
+    <h3>
+    	En esta pantalla se les solicitará un código simple que identifica el juego en el servidor web.
+        De esta forma pueden inicializar la partida sin estar conectados a internet y sincronizar los datos luego.
+    </h3>
+        <br>
+        <br>
+        <form id="juegoNuevo-form3" class="list ">
+
+                <h1>Código</h1>
+                <input class="input" type="number" placeholder="" ng-model="jugada_cod">
+
+        </form><br><br>
+        <a ng-click="iniciarJugada(jugada_cod)" id="juegoNuevo-button3">
+            <img src="img/crear.png"/>
+        </a>
+    </div>
+
+    <div ng-if="jugada_id!=0">
+        <br><br><br>
+        <br>
+    <h1>
+        Se encuentra activa la jugada: {{jugada_id}}
+    </h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="text-align: center">
+        <a ui-sref="menu.datosDelJugador" id="juegoNuevo-button3">
+            <img src="img/nuevo_jugador.png">
+        </a><br><br>
+        <a ng-click="nuevaJugada();" id="juegoNuevo-button3">
+            <img src="img/nuevo_juego.png">
+        </a>
+        </div>
+    </div>
+    </ion-content>
+</ion-view>

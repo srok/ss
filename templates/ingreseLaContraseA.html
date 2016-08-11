@@ -1,0 +1,16 @@
+<ion-view title="Ingrese la contraseña" id="page10" hide-back-button="true" hide-nav-bar="true" class="page_nuevo">
+    <ion-content padding="true" class="has-header">
+    <h1>Ingrese la contraseña para continuar</h1>
+    <div ng-if="password.error">
+        <h3 class="error">Contraseña Incorrecta</h3>
+    </div>
+        <form id="ingreseLaContraseA-form10" class="list ">
+
+                <input class="input" type="password" placeholder="" ng-model='password.pass'>
+
+        </form>
+        <a ng-click="checkPass()" id="ingreseLaContraseA-button8" style="text-align: center;display: block;width: 100%">
+            <img src="img/jugar.png"/>
+        </a>
+    </ion-content>
+</ion-view>

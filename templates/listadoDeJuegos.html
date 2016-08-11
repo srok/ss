@@ -1,0 +1,10 @@
+<ion-view title="Listado de juegos" id="page11" class=" ">
+    <ion-content padding="true" class="has-header">
+        <button id="listadoDeJuegos-button9" class=" button button-positive  button-block icon-left ion-ios-cloud-upload " ng-click="sincronizar();">Sincronizar</button>
+        <ion-list id="listadoDeJuegos-list2" class=" " >
+            <ion-item id="listadoDeJuegos-list-item5" ng-repeat="juego in juegos" class="  ">Jugada: {{juego.id_jugada}} ( {{juego.jugador_nombre}} #{{juego.jugador_codigo}} - {{juego.jugador_edad}} años - vuelta:{{juego.respuesta_vuelta}} )</ion-item>
+          
+        </ion-list>
+        <button id="listadoDeJuegos-button10" class=" button button-assertive  button-block icon-left ion-alert-circled " ng-click="clearData();">Borrar datos</button>
+    </ion-content>
+</ion-view>
