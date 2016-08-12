@@ -1,4 +1,14 @@
 body{font-family: 'Roboto'}
+[nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
+    background: #006fc9!important;
+}
+.bar.bar-stable .title{
+    color:#fff;
+}
+.bar-stable .button.button-clear{
+    color:#fff;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -339,3 +349,42 @@ input[type="range"]::-webkit-slider-thumb {
    }
 #juegoNuevo-button3{text-align: center;width: 100%;display: block}
 #juegoNuevo-button3 img{display: inline}
+
+/*******************ANIMACIONES********************************/
+.respuesta-item.ng-enter-stagger {
+  transition-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+
+.preguntaHeader.ng-enter {
+ 
+  animation: bounceIn 1s;
+ 
+}
+.respuesta-item.ng-enter {
+
+  animation: bounceIn 1s;
+
+}
+.personajeAnim{
+     animation: slideInUp 0.7s;
+}
+.respuesta-item.ng-leave,.preguntaHeader.ng-leave {
+ /*   position:absolute;
+    z-index: -1;
+      animation: fadeOutDown 2s;
+      transition-delay: 0s;
+      animation-delay: 0s;*/
+}
+
+
+.superheroeContainer{
+     animation: slideInUp 1.5s;
+
+    
+}
+.scroll img{
+     animation: slideInDown 1.5s;
+
+}
+/*******************ANIMACIONES********************************/

@@ -35,8 +35,10 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('finPreguntasCtrl', function($scope) {
-
+.controller('finPreguntasCtrl', function($scope){
+	bg_sound.pause();
+	bg_sound = new Audio('festejo.mp3');
+	bg_sound.play();
 })
 
 .controller('datosDelJugadorCtrl', function($scope, $location, $state,$ionicPopup) {
@@ -112,17 +114,27 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('preguntaCtrl', function($scope,$stateParams,$state,$rootScope,$ionicSideMenuDelegate) {
+.controller('preguntaCtrl', function($scope,$stateParams,$state,$rootScope,$ionicSideMenuDelegate,$timeout) {
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.player= player_actual;
 	// $scope.player.player_vuelta= 2;
-	$scope.pregunta= preguntas[currPreg];
-	$scope.ultPreg=preguntas.length;
-	$scope.siguiente_pregunta=$stateParams.p+1;//getNextQuestion();
-	currPreg++;
-	
+	 $timeout(function(){
+		$scope.pregunta= preguntas[currPreg];
+	 	$scope.preguntaDatos=[{
+	 		pregunta_id:$scope.pregunta.pregunta_id,
+	 		pregunta_text:$scope.pregunta.pregunta_text,
+	 	}];
+	 	console.log($scope.preguntaDatos);
+		$scope.ultPreg=preguntas.length;
+		$scope.siguiente_pregunta=$stateParams.p+1;//getNextQuestion();
+		currPreg++;
+	}, 100);
 
 	$scope.siguientePregunta=function(p){//Graba la pregunta y al finanlizar llama al metodo que redibuja la proxima
+
+		var sonido_next = new Audio('boton.mp3');
+		sonido_next.play();
+
 		if(!preguntas[currPreg-1].pregunta_finalizada){//se fija si la pregunta actual ya fue respondida dos veces
 
 			db.transaction(function(tx) {
@@ -162,22 +174,33 @@ angular.module('app.controllers', [])
 			preguntas[currPreg-1].pregunta_finalizada=0 // reseteo para el proximo jugador TODO:ver de hacer eres reseteo mas prolijo
 			
 			if(currPreg<=preguntas.length){//Si hay una pregunta despues
-				$scope.pregunta= preguntas[currPreg];
-				$scope.ultPreg=preguntas.length;
-				$scope.siguiente_pregunta=currPreg+1;
-				currPreg++;
+				$scope.pregunta={};
+				$scope.preguntaDatos={};
+
 				$scope.$apply();
-				
-				if(currPreg==6){//estamos en la pregunta 5
-					if(lastTrue.indexOf(0)!=-1){//se selecciono la primer opcion y se saltea la proxima pregunta
+				 $timeout(function(){
+					$scope.pregunta= preguntas[currPreg];
+					$scope.preguntaDatos=[{
+						pregunta_id:$scope.pregunta.pregunta_id,
+						pregunta_text:$scope.pregunta.pregunta_text,
+					}];
+					$scope.ultPreg=preguntas.length;
+					$scope.siguiente_pregunta=currPreg+1;
+					currPreg++;
+					$scope.$apply();
+					
+					if(currPreg==6){//estamos en la pregunta 5
+						if(lastTrue.indexOf(0)!=-1){//se selecciono la primer opcion y se saltea la proxima pregunta
 
-						$scope.nextQ();
+							$scope.nextQ();
+						}
+
+
 					}
-
-
-				}
-				console.log(lastTrue);
-				lastTrue=[];
+					console.log(lastTrue);
+					lastTrue=[];
+				});
+				
 			}else{//Si es la última pregunta.
 
 				restartGlobals();
@@ -187,7 +210,14 @@ angular.module('app.controllers', [])
 		}
 	}
 
-	$scope.clearAll = function(respuesta_id) {
+	$scope.clearAll = function(respuesta_id,$event) {
+		if($event.target.checked) {
+			var sonido_next = new Audio('respuestas.mp3');
+			sonido_next.play();
+		}else{
+			//var sonido_next = new Audio('unckeck.mp3');
+			//sonido_next.play();
+		}
 		angular.forEach($scope.pregunta.pregunta_respuestas, function(respuesta) {
 			if(respuesta_id!=respuesta.respuesta_id && !$scope.pregunta.pregunta_multiple)
 			respuesta.respuesta_sel = false;
@@ -197,6 +227,18 @@ angular.module('app.controllers', [])
 
 
 .controller('superSaludableCtrl', function($scope) {
+	$scope.iniciar_juego=function(){
+
+		var fadeAudio = setInterval(function () {
+
+			// Only fade if past the fade out point or not at zero already
+			if(bg_sound.volume>=0.1) {
+				bg_sound.volume -= 0.1;
+			}else{
+				clearInterval(fadeAudio);
+			}
+		}, 100);
+	}
 
 })
 

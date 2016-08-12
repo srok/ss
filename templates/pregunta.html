@@ -1,24 +1,26 @@
 <ion-view title="Pregunta {{pregunta.pregunta_id}} Ronda {{player.player_vuelta}}" hide-back-button="true" hide-nav-bar="true" id="page6" class="fondo{{pregunta.pregunta_id}}">
     <ion-content padding="true" class="has-header">
-        <div class="pregunta_txt">
-            <div class="globo" style='background: url("img/globo{{pregunta.pregunta_id}}.png");'>
-                <h1>
-                    {{pregunta.pregunta_id}}
-                </h1>
-            </div>
-            <p>
+        <div ng-repeat="pregunt in preguntaDatos" class="preguntaHeader">
+            <div class="pregunta_txt">
+                <div class="globo" style='background: url("img/globo{{pregunt.pregunta_id}}.png");'>
+                    <h1>
+                        {{pregunt.pregunta_id}}
+                    </h1>
+                </div>
+                <p>
 
-                {{pregunta.pregunta_text}}
-            </p>
+                    {{pregunt.pregunta_text}}
+                </p>
+            </div>
         </div>
         <form id="pregunta{{pregunta.pregunta_id}}" class="list" radio-group >
             <div class="pregunta">
-         <!--    <ion-radio class="{{pregunta.pregunta_clases}}" ng-if="!pregunta.pregunta_multiple" ng-class="{correcta: respuesta.respuesta_correcta , incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta" ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel">{{respuesta.respuesta_text}}</ion-radio> -->
-
-            <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}}"  ng-class="{correcta: respuesta.respuesta_correcta , incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta" ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id);">{{respuesta.respuesta_text}}</ion-checkbox>
+       
+ 
+            <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item"  ng-class="{correcta: respuesta.respuesta_correcta , incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta" ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
             </div>
         </form>
-        <div class="personaje" ng-show="pregunta.pregunta_finalizada">
+        <div class="personaje" ng-class="{'personajeAnim' : pregunta.pregunta_finalizada}" ng-show="pregunta.pregunta_finalizada">
             <img src="img/person{{pregunta.pregunta_id}}.png"/>
         </div>
       <!--   <a ui-sref="menu.pregunta({p:{{siguiente_pregunta}}})" ng-if="siguiente_pregunta<=ultPreg" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right ">Siguiente Pregunta</a> -->
