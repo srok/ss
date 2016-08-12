@@ -1,6 +1,20 @@
 var url='http://srok.mooo.com/identhya/ssws/';
 var url2 = 'http://90.0.0.1/identhya/ssws/';
 
+/*AUDIOS*/
+var audio_file = new Audio('ssalu_bg.mp3');
+//audio_file.loop = true;
+audio_file.play()
+
+audio_file.addEventListener('timeupdate', function(){
+    var buffer = .2
+    if(this.currentTime > this.duration - buffer){
+        this.currentTime = 0
+        this.play()
+    }}, false);
+
+/*AUDIOS*/
+
 var currPreg=1;
 var jugada_id=1;
 var player_actual={};
