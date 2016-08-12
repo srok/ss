@@ -36,9 +36,10 @@ angular.module('app.controllers', [])
 })
 
 .controller('finPreguntasCtrl', function($scope){
-	bg_sound.pause();
-	bg_sound = new Audio('festejo.mp3');
-	bg_sound.play();
+	//bg_sound = {};
+//	bg_sound.pause();
+	bg_sound2 = new Audio('festejo.mp3');
+	bg_sound2.play();
 })
 
 .controller('datosDelJugadorCtrl', function($scope, $location, $state,$ionicPopup) {
@@ -122,6 +123,7 @@ angular.module('app.controllers', [])
 		$scope.pregunta= preguntas[currPreg];
 	 	$scope.preguntaDatos=[{
 	 		pregunta_id:$scope.pregunta.pregunta_id,
+	 		pregunta_numero:$scope.pregunta.pregunta_numero,
 	 		pregunta_text:$scope.pregunta.pregunta_text,
 	 	}];
 	 	console.log($scope.preguntaDatos);
@@ -182,6 +184,8 @@ angular.module('app.controllers', [])
 					$scope.pregunta= preguntas[currPreg];
 					$scope.preguntaDatos=[{
 						pregunta_id:$scope.pregunta.pregunta_id,
+	 		pregunta_numero:$scope.pregunta.pregunta_numero,
+
 						pregunta_text:$scope.pregunta.pregunta_text,
 					}];
 					$scope.ultPreg=preguntas.length;
@@ -227,15 +231,20 @@ angular.module('app.controllers', [])
 
 
 .controller('superSaludableCtrl', function($scope) {
+
+	var bg_sound = new Audio('ssalu_bg.mp3');
+	bg_sound.loop = true;
+	bg_sound.play();
+
 	$scope.iniciar_juego=function(){
 
 		var fadeAudio = setInterval(function () {
 
-			// Only fade if past the fade out point or not at zero already
 			if(bg_sound.volume>=0.1) {
 				bg_sound.volume -= 0.1;
 			}else{
 				clearInterval(fadeAudio);
+				bg_sound={};
 			}
 		}, 100);
 	}

@@ -352,8 +352,8 @@ input[type="range"]::-webkit-slider-thumb {
 
 /*******************ANIMACIONES********************************/
 .respuesta-item.ng-enter-stagger {
-  transition-delay: 0.3s;
-  animation-delay: 0.3s;
+  transition-delay: 0.1s;
+  animation-delay: 0.1s;
 }
 
 .preguntaHeader.ng-enter {
@@ -369,13 +369,6 @@ input[type="range"]::-webkit-slider-thumb {
 .personajeAnim{
      animation: slideInUp 0.7s;
 }
-.respuesta-item.ng-leave,.preguntaHeader.ng-leave {
- /*   position:absolute;
-    z-index: -1;
-      animation: fadeOutDown 2s;
-      transition-delay: 0s;
-      animation-delay: 0s;*/
-}
 
 
 .superheroeContainer{
@@ -383,7 +376,7 @@ input[type="range"]::-webkit-slider-thumb {
 
     
 }
-.scroll img{
+.scroll .tit,.superheroeContainer img{
      animation: slideInDown 1.5s;
 
 }

@@ -2,9 +2,7 @@ var url='http://srok.mooo.com/identhya/ssws/';
 var url2 = 'http://90.0.0.1/identhya/ssws/';
 
 /*AUDIOS*/
-var bg_sound = new Audio('ssalu_bg.mp3');
-bg_sound.loop = true;
-bg_sound.play();
+
 
 // audio_file.addEventListener('timeupdate', function(){
 //     var buffer = .2
@@ -28,6 +26,7 @@ var preguntas={
 	length:12,
 	1:{
 		'pregunta_id':1,
+		'pregunta_numero':1,
 		'pregunta_text':'¿Cuáles de los siguientes alimentos son considerados cereales y legumbres y por eso nos aportan en mayor medida la energía que nuestro cuerpo necesita?',
 		'preguntas_respuestas_count':10,
 		'pregunta_respuestas':{
@@ -48,6 +47,8 @@ var preguntas={
 	},
 	2:{
 		'pregunta_id':2,
+		'pregunta_numero':2,
+
 		'pregunta_text':'Elegí la opción que consideres correcta',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
@@ -62,6 +63,8 @@ var preguntas={
 	},
 	3:{
 		'pregunta_id':3,
+		'pregunta_numero':3,
+
 		'pregunta_text':'¿Qué beneficio recibe nuestro cuerpo cuando comemos frutas y verduras?',
 		'preguntas_respuestas_count':4,
 		'pregunta_respuestas':{
@@ -77,6 +80,8 @@ var preguntas={
 	},
 	4:{
 		'pregunta_id':4,
+		'pregunta_numero':4,
+
 		'pregunta_text':'Elegí la afirmación correcta.',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
@@ -92,6 +97,8 @@ var preguntas={
 	},
 	5:{
 		'pregunta_id':5,
+		'pregunta_numero':'4',
+
 		'pregunta_text':'En caso de considerar que es importante consumir leche, yogur y/o quesos diariamente,¿Cuál/es te parece que son los motivos?',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
@@ -108,6 +115,8 @@ var preguntas={
 
 	6:{
 		'pregunta_id':6,
+		'pregunta_numero':5,
+
 		'pregunta_text':'Señalá los alimentos que en tu opinión elegirías para un desayuno saludable',
 		'preguntas_respuestas_count':13,
 		'pregunta_respuestas':{
@@ -131,6 +140,8 @@ var preguntas={
 	},
 	7:{
 		'pregunta_id':7,
+		'pregunta_numero':6,
+
 		'pregunta_text':'¿En cuáles de los siguientes alimentos encontramos en mayor cantidad a la proteína y el hierro?',
 		'preguntas_respuestas_count':11,
 		'pregunta_respuestas':{
@@ -153,6 +164,8 @@ var preguntas={
 	},
 	8:{
 		'pregunta_id':8,
+		'pregunta_numero':7,
+
 		'pregunta_text':'Completa la siguiente frase eligiendo una de las tres opciones que figuran debajo “Comer carnes (vaca, pescado, pollo y cerdo) y huevos nos da proteínas y hierro que nos ayuda a…  ',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
@@ -168,6 +181,8 @@ var preguntas={
 	},
 	9:{
 		'pregunta_id':9,
+		'pregunta_numero':8,
+
 		'pregunta_text':'Pensá en las papas fritas, golosinas, gaseosas o mayonesa, ¿Cuál te parece que es la opción acertada? Elige una de las siguientes opciones',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
@@ -183,6 +198,8 @@ var preguntas={
 	},
 	10:{
 		'pregunta_id':10,
+		'pregunta_numero':9,
+
 		'pregunta_text':'En relación al consumo de agua, ¿Cuáles de las siguientes opciones considerás son correctas? Puede haber más de una opción correcta.',
 		'preguntas_respuestas_count':4,
 		'pregunta_respuestas':{
@@ -199,6 +216,8 @@ var preguntas={
 	},
 	11:{
 		'pregunta_id':11,
+		'pregunta_numero':10,
+
 		'pregunta_text':'Marcá la oración acertada',
 		'preguntas_respuestas_count':2,
 		'pregunta_respuestas':{
@@ -213,6 +232,8 @@ var preguntas={
 	},
 	12:{
 		'pregunta_id':12,
+		'pregunta_numero':11,
+
 		'pregunta_text':'Para que nuestra alimentación sea más sana… (elegí la opción que consideres correcta)',
 		'preguntas_respuestas_count':3,
 		'pregunta_respuestas':{
