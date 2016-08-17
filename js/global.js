@@ -14,7 +14,7 @@ var url2 = 'http://90.0.0.1/identhya/ssws/';
 /*AUDIOS*/
 
 var currPreg=1;
-var jugada_id=1;
+var jugada_id=0;
 var player_actual={};
 var password='12345';
 var lastTrue=[];
@@ -122,14 +122,14 @@ var preguntas={
 		'pregunta_respuestas':{
 			0:{respuesta_id:0,respuesta_text:'Leche',respuesta_correcta:1,respuesta_sel:0},
 			1:{respuesta_id:1,respuesta_text:'Yogur',respuesta_correcta:1,respuesta_sel:0},
-			2:{respuesta_id:2,respuesta_text:'Queso',respuesta_correcta:1,respuesta_sel:0},
+			2:{respuesta_id:9,respuesta_text:'Gaseosas o jugos',respuesta_correcta:0,respuesta_sel:0},
 			3:{respuesta_id:3,respuesta_text:'Pan',respuesta_correcta:1,respuesta_sel:0},
 			4:{respuesta_id:4,respuesta_text:'Galletitas de agua',respuesta_correcta:1,respuesta_sel:0},
 			5:{respuesta_id:5,respuesta_text:'Galletitas dulces',respuesta_correcta:1,respuesta_sel:0},
 			6:{respuesta_id:6,respuesta_text:'Facturas/bizcochos',respuesta_correcta:1,respuesta_sel:0},
 			7:{respuesta_id:7,respuesta_text:'Mermelada',respuesta_correcta:1,respuesta_sel:0},
 			8:{respuesta_id:8,respuesta_text:'Dulce de leche',respuesta_correcta:1,respuesta_sel:0},
-			9:{respuesta_id:9,respuesta_text:'Gaseosas o jugos',respuesta_correcta:0,respuesta_sel:0},
+			9:{respuesta_id:2,respuesta_text:'Queso',respuesta_correcta:1,respuesta_sel:0},
 			10:{respuesta_id:10,respuesta_text:'Frutas (ensalada/ exprimido)',respuesta_correcta:1,respuesta_sel:0},
 			11:{respuesta_id:11,respuesta_text:'Cereales',respuesta_correcta:1,respuesta_sel:0},
 			12:{respuesta_id:12,respuesta_text:'Chizitos /papas fritas',respuesta_correcta:0,respuesta_sel:0},

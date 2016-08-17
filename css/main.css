@@ -1,4 +1,4 @@
-body{font-family: 'Roboto'}
+body{font-family: 'museo_sans'}
 [nav-bar-transition="android"] [nav-bar="active"] .bar, [nav-bar-transition="android"] [nav-bar="entering"] .bar{
     background: #006fc9!important;
 }
@@ -265,7 +265,7 @@ ion-list.manual-list-fullwidth div.list > .item, .list.card.manual-card-fullwidt
     background: url('../img/fondo11.jpg');
     background-size: cover;
 }
-.fondo11{
+.fondo12{
     background: url('../img/fondo12.jpg');
     background-size: cover;
 }

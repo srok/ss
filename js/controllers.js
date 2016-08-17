@@ -131,7 +131,7 @@ angular.module('app.controllers', [])
 		$scope.siguiente_pregunta=$stateParams.p+1;//getNextQuestion();
 		currPreg++;
 	}, 100);
-
+	
 	$scope.siguientePregunta=function(p){//Graba la pregunta y al finanlizar llama al metodo que redibuja la proxima
 
 		var sonido_next = new Audio('boton.mp3');
@@ -162,15 +162,15 @@ angular.module('app.controllers', [])
 	}
 
 	$scope.nextQ=function(){//dibuja la proxima pregunta
-
-		$rootScope.bodyClass='fondo'+preguntas[currPreg-1].pregunta_id;
-
+		
+		$rootScope.bodyClass='fondo'+(currPreg-1);
+		console.log('fondo'+(currPreg-1));
 		if(!preguntas[currPreg-1].pregunta_finalizada && player_actual.player_vuelta==2){//si segunda vuelta primer siguiente
 		   //mostrar los resultados
 		   preguntas[currPreg-1].pregunta_finalizada=1;
 		   $scope.pregunta= preguntas[currPreg-1];
 		   $scope.$apply();
-
+	   	   
 		}else if(preguntas[currPreg-1].pregunta_finalizada || player_actual.player_vuelta==1){//si segunda vuelta segundo siguiente o primera vuelta:
 			
 			preguntas[currPreg-1].pregunta_finalizada=0 // reseteo para el proximo jugador TODO:ver de hacer eres reseteo mas prolijo
