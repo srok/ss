@@ -38,8 +38,7 @@ angular.module('app.controllers', [])
 .controller('finPreguntasCtrl', function($scope){
 	//bg_sound = {};
 //	bg_sound.pause();
-	bg_sound2 = new Audio('festejo.mp3');
-	bg_sound2.play();
+	
 })
 
 .controller('datosDelJugadorCtrl', function($scope, $location, $state,$ionicPopup) {
@@ -162,7 +161,8 @@ angular.module('app.controllers', [])
 	}
 
 	$scope.nextQ=function(){//dibuja la proxima pregunta
-		
+		bg_sound3 = new Audio('swoosh.mp3');
+		bg_sound3.play();
 		$rootScope.bodyClass='fondo'+(currPreg-1);
 		console.log('fondo'+(currPreg-1));
 		if(!preguntas[currPreg-1].pregunta_finalizada && player_actual.player_vuelta==2){//si segunda vuelta primer siguiente
@@ -184,7 +184,7 @@ angular.module('app.controllers', [])
 					$scope.pregunta= preguntas[currPreg];
 					$scope.preguntaDatos=[{
 						pregunta_id:$scope.pregunta.pregunta_id,
-	 		pregunta_numero:$scope.pregunta.pregunta_numero,
+	 					pregunta_numero:$scope.pregunta.pregunta_numero,
 
 						pregunta_text:$scope.pregunta.pregunta_text,
 					}];
@@ -209,6 +209,8 @@ angular.module('app.controllers', [])
 
 				restartGlobals();
 				$state.go('menu.finPreguntas');
+				bg_sound2 = new Audio('festejo.mp3');
+				bg_sound2.play();
 			}
 
 		}

@@ -355,7 +355,10 @@ input[type="range"]::-webkit-slider-thumb {
   transition-delay: 0.1s;
   animation-delay: 0.1s;
 }
-
+.preg6.ng-enter-stagger{
+     transition-delay: 0s!important;
+  animation-delay: 0s!important;
+}
 .preguntaHeader.ng-enter {
  
   animation: bounceIn 1s;
@@ -371,13 +374,30 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-.superheroeContainer{
-     animation: slideInUp 1.5s;
+.superheroeContainer #super{
+     animation: fadeIn 2.5s;
 
     
 }
-.scroll .tit,.superheroeContainer img{
+.scroll .tit{
      animation: slideInDown 1.5s;
+
+}
+ .nuevo{
+    animation: fadeIn 1.5s;
+
+
+}
+
+.finPreguntas #tit{
+
+  animation: bounceIn 1s;
+
+}
+
+.finPreguntas #pers{
+
+  animation: slideInUp 0.7s;
 
 }
 /*******************ANIMACIONES********************************/

@@ -17,7 +17,7 @@
             <div class="pregunta">
        
  
-            <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item "  ng-class="{correcta: respuesta.respuesta_correcta , incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta" ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
+            <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}}"  ng-class="{correcta: respuesta.respuesta_correcta , incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta" ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
             </div>
         </form>
         <div class="personaje" ng-class="{'personajeAnim' : pregunta.pregunta_finalizada}" ng-show="pregunta.pregunta_finalizada">
