@@ -1,5 +1,5 @@
-var url='http://srok.mooo.com/identhya/ssws/';
-var url2 = 'http://90.0.0.1/identhya/ssws/';
+var url='http://c0070405.ferozo.com/';
+var url2='http://srok.mooo.com/identhya/ssws/';
 
 /*AUDIOS*/
 
