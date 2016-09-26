@@ -1,6 +1,16 @@
 angular.module('app.controllers', [])
 
-.controller('juegoNuevoCtrl', function($scope) {
+.controller('juegoNuevoCtrl', function($scope,$rootScope) {
+	var fadeAudio = setInterval(function () {
+
+			if($rootScope.bg_sound.volume>=0.1) {
+				$rootScope.bg_sound.volume -= 0.1;
+			}else{
+				clearInterval(fadeAudio);
+				$rootScope.bg_sound={};
+			}
+		}, 100);
+
 	$scope.jugada_id=jugada_id;
 	$scope.nuevaJugada = function(){
 		$scope.jugada_id = 0;
@@ -38,7 +48,7 @@ angular.module('app.controllers', [])
 .controller('finPreguntasCtrl', function($scope){
 	//bg_sound = {};
 //	bg_sound.pause();
-	
+
 })
 
 .controller('datosDelJugadorCtrl', function($scope, $location, $state,$ionicPopup) {
@@ -82,18 +92,21 @@ angular.module('app.controllers', [])
 	$scope.loadPlayer=function (player){
 		//chequeo si ya jugó. si jugo le sumo una vuelta, si jugo dos veces alerto.
 
-		db.transaction(function(tx) {
+		if($scope.player.player_code=='' || $scope.player.player_code=='undefined'){
+			alert($ionicPopup,$scope,'Error','Falta introducir el código');
+		}else{
+			db.transaction(function(tx) {
 
-			tx.executeSql('select * from respuestas where jugador_codigo = ? AND id_jugada=? GROUP BY respuesta_vuelta', [player.player_code,jugada_id], function(tx,rs) {
-				console.log(rs.rows);
-				if(rs.rows.length==1){
-					$scope.player.player_vuelta=2;
+				tx.executeSql('select * from respuestas where jugador_codigo = ? AND id_jugada=? GROUP BY respuesta_vuelta', [player.player_code,jugada_id], function(tx,rs) {
+					console.log(rs.rows);
+					if(rs.rows.length==1){
+						$scope.player.player_vuelta=2;
 
-				}else if(rs.rows.length==2){
-					$scope.player.player_vuelta=3;
-				}
+					}else if(rs.rows.length==2){
+						$scope.player.player_vuelta=3;
+					}
 
-				if($scope.player.player_vuelta<3){
+					if($scope.player.player_vuelta<3){
 									//cargo el jugador en global.
 									player_actual=$scope.player;
 
@@ -107,31 +120,33 @@ angular.module('app.controllers', [])
 
 							}, errorDB);
 
-		}, errorDB);
+			}, errorDB);
 
-
+		}
 	};
 
 })
 
 .controller('preguntaCtrl', function($scope,$stateParams,$state,$rootScope,$ionicSideMenuDelegate,$timeout) {
+	$scope.puedeSeguir=0;
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.player= player_actual;
 	// $scope.player.player_vuelta= 2;
-	 $timeout(function(){
+	$timeout(function(){
 		$scope.pregunta= preguntas[currPreg];
-	 	$scope.preguntaDatos=[{
-	 		pregunta_id:$scope.pregunta.pregunta_id,
-	 		pregunta_numero:$scope.pregunta.pregunta_numero,
-	 		pregunta_text:$scope.pregunta.pregunta_text,
-	 	}];
-	 	console.log($scope.preguntaDatos);
+		$scope.preguntaDatos=[{
+			pregunta_id:$scope.pregunta.pregunta_id,
+			pregunta_numero:$scope.pregunta.pregunta_numero,
+			pregunta_text:$scope.pregunta.pregunta_text,
+		}];
+		console.log($scope.preguntaDatos);
 		$scope.ultPreg=preguntas.length;
 		$scope.siguiente_pregunta=$stateParams.p+1;//getNextQuestion();
 		currPreg++;
 	}, 100);
 	
 	$scope.siguientePregunta=function(p){//Graba la pregunta y al finanlizar llama al metodo que redibuja la proxima
+		$scope.puedeSeguir=0;
 
 		var sonido_next = new Audio('boton.mp3');
 		sonido_next.play();
@@ -170,7 +185,7 @@ angular.module('app.controllers', [])
 		   preguntas[currPreg-1].pregunta_finalizada=1;
 		   $scope.pregunta= preguntas[currPreg-1];
 		   $scope.$apply();
-	   	   
+
 		}else if(preguntas[currPreg-1].pregunta_finalizada || player_actual.player_vuelta==1){//si segunda vuelta segundo siguiente o primera vuelta:
 			
 			preguntas[currPreg-1].pregunta_finalizada=0 // reseteo para el proximo jugador TODO:ver de hacer eres reseteo mas prolijo
@@ -180,11 +195,11 @@ angular.module('app.controllers', [])
 				$scope.preguntaDatos={};
 
 				$scope.$apply();
-				 $timeout(function(){
+				$timeout(function(){
 					$scope.pregunta= preguntas[currPreg];
 					$scope.preguntaDatos=[{
 						pregunta_id:$scope.pregunta.pregunta_id,
-	 					pregunta_numero:$scope.pregunta.pregunta_numero,
+						pregunta_numero:$scope.pregunta.pregunta_numero,
 
 						pregunta_text:$scope.pregunta.pregunta_text,
 					}];
@@ -226,27 +241,28 @@ angular.module('app.controllers', [])
 		}
 		angular.forEach($scope.pregunta.pregunta_respuestas, function(respuesta) {
 			if(respuesta_id!=respuesta.respuesta_id && !$scope.pregunta.pregunta_multiple)
-			respuesta.respuesta_sel = false;
+				respuesta.respuesta_sel = false;
 		});
+		$scope.puedeSeguir=1;
 	};
 })
 
 
-.controller('superSaludableCtrl', function($scope) {
+.controller('superSaludableCtrl', function($scope,$rootScope) {
 
-	var bg_sound = new Audio('ssalu_bg.mp3');
-	bg_sound.loop = true;
-	bg_sound.play();
+	$rootScope.bg_sound = new Audio('ssalu_bg.mp3');
+	$rootScope.bg_sound.loop = true;
+	$rootScope.bg_sound.play();
 
 	$scope.iniciar_juego=function(){
 
 		var fadeAudio = setInterval(function () {
 
-			if(bg_sound.volume>=0.1) {
-				bg_sound.volume -= 0.1;
+			if($rootScope.bg_sound.volume>=0.1) {
+				$rootScope.bg_sound.volume -= 0.1;
 			}else{
 				clearInterval(fadeAudio);
-				bg_sound={};
+				$rootScope.bg_sound={};
 			}
 		}, 100);
 	}
@@ -257,7 +273,17 @@ angular.module('app.controllers', [])
 
 })
 
-.controller('listadoDeJuegosCtrl', function($scope,$http,$ionicPopup,$httpParamSerializer) {
+.controller('listadoDeJuegosCtrl', function($scope,$http,$ionicPopup,$httpParamSerializer,$rootScope) {
+	var fadeAudio = setInterval(function () {
+
+			if($rootScope.bg_sound.volume>=0.1) {
+				$rootScope.bg_sound.volume -= 0.1;
+			}else{
+				clearInterval(fadeAudio);
+				$rootScope.bg_sound={};
+			}
+		}, 100);
+
 	$scope.juegos={
 	};
 	db.transaction(function(tx) {

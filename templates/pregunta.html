@@ -24,7 +24,7 @@
             <img src="img/person{{pregunta.pregunta_id}}.png"/>
         </div>
       <!--   <a ui-sref="menu.pregunta({p:{{siguiente_pregunta}}})" ng-if="siguiente_pregunta<=ultPreg" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right ">Siguiente Pregunta</a> -->
-        <a ng-click="siguientePregunta()"  id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right btn-next">
+        <a ng-click="siguientePregunta()" ng-show="puedeSeguir" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right btn-next">
             <!--<span ng-if="siguiente_pregunta<=ultPreg">-->
                 <!--Siguiente Pregunta-->
             <!--</span>-->

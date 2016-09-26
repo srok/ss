@@ -42,7 +42,8 @@ function deleteAllData(){
 
 
 //EL INSERT
-
+// for (i=0;i<100000;i++){
 // db.transaction(function(tx) {
 // tx.executeSql('insert into respuestas values(?,?,?,?,?,?,?,?,?,?)',[2,1,1,1,1,1,10,'marcelo','1','observacion de marcelo']);
 // }, errorDB, successDB);
+// }
