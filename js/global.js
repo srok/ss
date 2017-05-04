@@ -1,5 +1,5 @@
-var url2='http://c0070405.ferozo.com/';
-var url='http://192.168.1.33/identhya/ssws/';
+var url='http://c0070405.ferozo.com/';
+var url2='http://192.168.1.33/identhya/ssws/';
 
 /*AUDIOS*/
 
