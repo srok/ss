@@ -236,6 +236,8 @@ angular.module('app.controllers', [])
 	}
 
 	$scope.clearAll = function(respuesta_id,$event) {
+		console.log(respuesta_id);
+		console.log($event);
 		if($event.target.checked) {
 			var sonido_next = new Audio('respuestas.mp3');
 			sonido_next.play();

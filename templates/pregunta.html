@@ -29,16 +29,16 @@
         <form id="pregunta{{pregunta.pregunta_id}}" class="list" radio-group >
             <div class="pregunta">
        
-             <div ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-class="{correcta: respuesta.respuesta_correcta, incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada}" class="colors{{pregunta.pregunta_id}} resp">
-                    <div ng-if="respuesta.img!=''" class="con-image">
-                        <div class="pregunta-imagen colors{{pregunta.pregunta_id}}" >
+             <div  ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-class="{correcta: respuesta.respuesta_correcta, incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada}" class="colors{{pregunta.pregunta_id}} resp" >
+                    <div ng-if="respuesta.img!=''" class="con-image" >
+                        <div class="pregunta-imagen colors{{pregunta.pregunta_id}}"  ng-click="clearAll(respuesta.respuesta_id,$event);respuesta.respuesta_sel=!respuesta.respuesta_sel;(respuesta.respuesta_sel)?respuesta.respuesta_sel=1:respuesta.respuesta_sel=0">
                             <img src="img/fotos/{{respuesta.img}}" >
                         </div>
                        
                           <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}} conimagen"  ng-class="{'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
                     </div>
                    
-                    <ion-checkbox ng-if="!respuesta.img!=''" class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}}"  ng-class="{'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
+                    <ion-checkbox  ng-if="!respuesta.img!=''" class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}}"  ng-class="{'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
                 </div>
  
           
