@@ -131,7 +131,7 @@ angular.module('app.controllers', [])
 	$scope.puedeSeguir=0;
 	$ionicSideMenuDelegate.canDragContent(false);
 	$scope.player= player_actual;
-	// $scope.player.player_vuelta= 2;
+	//$scope.player.player_vuelta= 2;
 	$timeout(function(){
 		$scope.pregunta= preguntas[currPreg];
 		$scope.preguntaDatos=[{
@@ -156,6 +156,7 @@ angular.module('app.controllers', [])
 			db.transaction(function(tx) {
 				for(i=0;i<$scope.pregunta.preguntas_respuestas_count;i++){
 					respuesta=$scope.pregunta.pregunta_respuestas[i];
+					console.log(respuesta);
 					value=0;
 					if(respuesta.respuesta_sel!=0){
 						value=1;
@@ -172,6 +173,7 @@ angular.module('app.controllers', [])
 		}else{//si la pregunta actual fue respondida dos veces paso a la proxima
 			$scope.nextQ();
 		}
+		$scope.$apply();
 		
 	}
 
@@ -183,6 +185,8 @@ angular.module('app.controllers', [])
 		if(!preguntas[currPreg-1].pregunta_finalizada && player_actual.player_vuelta==2){//si segunda vuelta primer siguiente
 		   //mostrar los resultados
 		   preguntas[currPreg-1].pregunta_finalizada=1;
+			$scope.puedeSeguir=1;
+
 		   $scope.pregunta= preguntas[currPreg-1];
 		   $scope.$apply();
 
@@ -208,14 +212,14 @@ angular.module('app.controllers', [])
 					currPreg++;
 					$scope.$apply();
 					
-					if(currPreg==6){//estamos en la pregunta 5
-						if(lastTrue.indexOf(0)!=-1){//se selecciono la primer opcion y se saltea la proxima pregunta
+					// if(currPreg==6){//estamos en la pregunta 5
+					// 	if(lastTrue.indexOf(0)!=-1){//se selecciono la primer opcion y se saltea la proxima pregunta
 
-							$scope.nextQ();
-						}
+					// 		$scope.nextQ();
+					// 	}
 
 
-					}
+					// }
 					console.log(lastTrue);
 					lastTrue=[];
 				});

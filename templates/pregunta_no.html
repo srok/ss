@@ -1,5 +1,5 @@
 <ion-view title="Pregunta {{pregunta.pregunta_id}} Ronda {{player.player_vuelta}}" hide-back-button="true" hide-nav-bar="true" id="page6" class="fondo{{pregunta.pregunta_id}}">
-    <ion-content padding="true" class="has-header">
+    <ion-content padding="true" class="has-header" >
         <div ng-repeat="pregunt in preguntaDatos" class="preguntaHeader" ng-if="pregunta.pregunta_id!=1 && pregunta.pregunta_id!=6">
             <div class="pregunta_txt">
                 <div class="globo" style='background: url("img/globo{{pregunt.pregunta_id}}.png");'>
@@ -28,37 +28,38 @@
         </div>
         <form id="pregunta{{pregunta.pregunta_id}}" class="list" radio-group >
             <div class="pregunta">
-       
-             <div ng-repeat="respuesta in pregunta.pregunta_respuestas" ng-class="{correcta: respuesta.respuesta_correcta, incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada}" class="colors{{pregunta.pregunta_id}} resp">
+
+            <div ng-repeat="respuesta in pregunta.pregunta_respuestas" class="resp">
                     <div ng-if="respuesta.img!=''" class="con-image">
                         <div class="pregunta-imagen colors{{pregunta.pregunta_id}}" >
                             <img src="img/fotos/{{respuesta.img}}" >
                         </div>
-                       
-                          <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}} conimagen"  ng-class="{'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
+                        {{respuesta.respuesta_correcta}}
+                          <ion-checkbox class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}} conimagen"  ng-class="{correcta: respuesta.respuesta_correcta, incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
                     </div>
                    
-                    <ion-checkbox ng-if="!respuesta.img!=''" class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}}"  ng-class="{'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
+                    <ion-checkbox ng-if="!respuesta.img!=''" class="{{pregunta.pregunta_clases}} colors{{pregunta.pregunta_id}} respuesta-item preg{{pregunta.pregunta_id}}"  ng-class="{correcta: respuesta.respuesta_correcta, incorrecta: !respuesta.respuesta_correcta, 'status': pregunta.pregunta_finalizada,'item_checked':respuesta.respuesta_sel}" name="respuesta"  ng-disabled="pregunta.pregunta_finalizada" ng-value="1" ng-model="respuesta.respuesta_sel" ng-click="clearAll(respuesta.respuesta_id,$event);">{{respuesta.respuesta_text}}</ion-checkbox>
                 </div>
- 
-          
-
+                
             </div>
+            <div class="resp">
+                    <div class="con-image"></div>
+                </div>
         </form>
         <div class="personaje" ng-class="{'personajeAnim' : pregunta.pregunta_finalizada}" ng-show="pregunta.pregunta_finalizada">
             <img src="img/person{{pregunta.pregunta_id}}.png"/>
         </div>
-      <!--   <a ui-sref="menu.pregunta({p:{{siguiente_pregunta}}})" ng-if="siguiente_pregunta<=ultPreg" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right ">Siguiente Pregunta</a> -->
+        <!--   <a ui-sref="menu.pregunta({p:{{siguiente_pregunta}}})" ng-if="siguiente_pregunta<=ultPreg" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right ">Siguiente Pregunta</a> -->
         <a ng-click="siguientePregunta()" ng-show="puedeSeguir" id="pregunta-next" class=" button button-balanced  button-block icon-right ion-chevron-right btn-next">
             <!--<span ng-if="siguiente_pregunta<=ultPreg">-->
-                <!--Siguiente Pregunta-->
+            <!--Siguiente Pregunta-->
             <!--</span>-->
             <!--<span ng-if="siguiente_pregunta>ultPreg">-->
-                <!--Finalizar-->
+            <!--Finalizar-->
             <!--</span>-->
             <img src="img/next{{pregunta.pregunta_id}}.png" ng-if="siguiente_pregunta<=ultPreg"/>
             <img src="img/end.png" ng-if="siguiente_pregunta>ultPreg"/>
         </a>
-      
+
     </ion-content>
 </ion-view>
