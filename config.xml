@@ -24,7 +24,7 @@
     <preference name="disable-cursor" value="false" />
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
-    <preference name="phonegap-version" value="cli-5.1.1" />
+    <!-- <preference name="phonegap-version" value="cli-5.1.1" /> -->
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="0" />
     <preference name="StatusBarBackgroundColor" value="#006fc9" />
